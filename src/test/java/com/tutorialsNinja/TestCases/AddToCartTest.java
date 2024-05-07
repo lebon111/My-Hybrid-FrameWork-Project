@@ -65,7 +65,8 @@ public class AddToCartTest extends TestBase  {
 		searchProduct.searchProduct_Link();
 		addToCart.retrieveItemCartTextSP();
 		addToCart.deliveryDateTextBox();
-	    addToCart.calendarButtonDate();
+		addToCart.selectDeliveryDate();
+	    //addToCart.calendarButtonDate();
 		addToCart.quantityTextBox();
 		addToCart.clickAddToCardButton();
 		addToCart.successMessageText();

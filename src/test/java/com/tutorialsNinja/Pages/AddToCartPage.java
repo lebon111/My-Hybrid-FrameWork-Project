@@ -93,9 +93,9 @@ public class AddToCartPage {
 	
 	 public void selectDeliveryDate()
 	    {
-	        String year = "2023";
-	        String month = "November";
-	        String date = "30";
+		 String year = "2024" ;
+		 String month = "July";
+		 String date = "10";
 	        calendarButton.click();
 	        while(true)
 	        {
@@ -103,7 +103,7 @@ public class AddToCartPage {
 	            String arr[] = monthAndYear1.split(" ");
 	            String mon = arr[0] ;
 	            String yer = arr[1];
-	            if(mon.equalsIgnoreCase(month) && yer.equalsIgnoreCase(year))
+	            if(mon.equalsIgnoreCase(month  ) && yer.equalsIgnoreCase(year))
 	            {
 	                break;
 	            }
@@ -114,10 +114,10 @@ public class AddToCartPage {
 
 
 	        }
-	        List<WebElement> allDates1 = allDates.findElements(null);
-	        for(WebElement dateList:allDates1)
+	        List<WebElement> allDates = driver.findElements(By.xpath("//div[@class = 'datepicker']/div[1]//tbody/tr/td[@class = 'day']"));
+	        for(WebElement dateList:allDates)
 	        {
-	            if(dateList.getText().equalsIgnoreCase(date))
+	            if(dateList.getText().equalsIgnoreCase(date ))
 	            {
 	                dateList.click();
 	                break;

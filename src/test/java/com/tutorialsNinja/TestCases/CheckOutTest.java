@@ -23,6 +23,7 @@ public class CheckOutTest extends TestBase {
 	public HomePage homepage;
 	public CheckOutPage checkout;
 	public HomePage loginin;
+	public HomePage searchProduct;
 	
 	
 	@BeforeMethod
@@ -33,6 +34,7 @@ public class CheckOutTest extends TestBase {
 		loginin = new HomePage(driver);
 		ShoppingC = new HomePage(driver);
 		checkout = new CheckOutPage(driver);
+		searchProduct = new HomePage(driver);
 		
 	}
 	
@@ -43,6 +45,7 @@ public class CheckOutTest extends TestBase {
 	public void validateNavigatingToCheckoutPageFromShoppingCartPage()  {
 		
 		loginin.LoginIn();
+		searchProduct.searchValidProduct();
 		ShoppingC.clickShoppingCart();
 		ShoppingC.clickCheckout();
 		checkout.selectExistingAddress();

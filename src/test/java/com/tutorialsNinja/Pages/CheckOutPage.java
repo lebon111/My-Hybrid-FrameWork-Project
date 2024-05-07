@@ -17,7 +17,7 @@ public WebDriver driver;
 	@FindBy (xpath = "//div[@id='content']//p[contains(text(),'Your shopping cart is empty!')]")
 	private WebElement emptyShoppingCartMessage;
 	
-	@FindBy(css = "input[value='existing']")
+	@FindBy(css = "div:nth-of-type(1) > label > input[name='payment_address']")
 	private WebElement existingAddress;
 	
 	@FindBy(xpath="input[value='new']")
