@@ -1,6 +1,7 @@
 package com.tutorialsNinja.TestCases;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -37,10 +38,7 @@ public class CheckOutTest extends TestBase {
 		searchProduct = new HomePage(driver);
 		
 	}
-	
-	
-	
-	
+
 	@Test(priority = 1)
 	public void validateNavigatingToCheckoutPageFromShoppingCartPage()  {
 		
@@ -54,12 +52,7 @@ public class CheckOutTest extends TestBase {
 		checkout.clickStep4Continue();
 		checkout.clickTermsCheckBox();
 		checkout.clickStep5Continue();
-		checkout.confirmOrder();
-		
-		
-		
-		
-		
+		checkout.confirmOrder();	
 	}
 	@Test(priority = 2)
 	public void validateCheckoutAsSignedInUserUsingExistingAddress () {
@@ -73,11 +66,7 @@ public class CheckOutTest extends TestBase {
 		checkout.clickStep4Continue();
 		checkout.clickTermsCheckBox();
 		checkout.clickStep5Continue();
-		checkout.confirmOrder();
-		
-		
-		
-		
+		checkout.confirmOrder();	
 	}
 	
 	@Test(priority = 3 , dataProvider = "TNNewAddress", dataProviderClass = ExcelCode.class)
@@ -98,13 +87,9 @@ public class CheckOutTest extends TestBase {
 		
 		
 	}
-    @Test(priority = 4)
+    @Test(priority = 5)
     public void validateCheckoutAsSignedInUserByEnteringAllFieldsNewAddress(String firstName,String lastName,String address1, String city, String postcode,  String country, String state) {
-    	
-    		loginin = new HomePage(driver);
     		loginin.LoginIn();
-    		ShoppingC = new HomePage(driver);
-    		checkout = new CheckOutPage(driver);
     		ShoppingC.clickShoppingCart();
     		ShoppingC.clickCheckout();
     		checkout.selectNewAddress();
@@ -114,6 +99,24 @@ public class CheckOutTest extends TestBase {
     		checkout.clickTermsCheckBox();
     		checkout.clickStep5Continue();
     		checkout.confirmOrder();
+		
+	}
+    @Test(priority = 4)
+    public void validateCheckoutAsSignedInUserWithoutEnteringAnyCredentialsNewAddress() {
+    	loginin.LoginIn();
+    	checkout.selectNewAddress();
+    	checkout.clickStep2Continue();
+    	Assert.assertTrue(checkout.retrieveAllWarningMessages(dataProp.getProperty("firstNameWarningMessage"),
+    			dataProp.getProperty("lastNameWarningMessage"), 
+    			dataProp.getProperty("address1WarningMessage"), 
+    			dataProp.getProperty("cityWarningMessage"), 
+    			dataProp.getProperty("postCodeWarningMessage"), 
+    			dataProp.getProperty("regionStateWarningMessage")));
+    	
+    	
+    	
+    		
+    		
 		
 	}
     

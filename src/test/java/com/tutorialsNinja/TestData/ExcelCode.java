@@ -97,7 +97,7 @@ public class ExcelCode {
 		}
 	@DataProvider(name = "TNNewAddress")
 	public Object[][] getTNExcelNewAddressData() throws Exception {
-		Object[][] data = ExcelCode.readFromExcelSheetTNRegister("NewAddressTN");
+		Object[][] data = ExcelCode.readFromExcelSheetTNNewAddress("NewAddressTN");
 		return data;
 	}
 	

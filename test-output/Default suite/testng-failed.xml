@@ -5,9 +5,11 @@
     <classes>
       <class name="com.tutorialsNinja.TestCases.CheckOutTest">
         <methods>
+          <include name="validateCheckoutAsSignedInUserWithoutEnteringAnyCredentialsNewAddress"/>
           <include name="tearDown"/>
+          <include name="validateCheckoutAsSignedInUserByEnteringMandatoryNewAddress"/>
           <include name="CheckOutsetup"/>
-          <include name="validateNavigatingToCheckoutPageFromShoppingCartPage"/>
+          <include name="validateCheckoutAsSignedInUserByEnteringAllFieldsNewAddress"/>
         </methods>
       </class> <!-- com.tutorialsNinja.TestCases.CheckOutTest -->
     </classes>

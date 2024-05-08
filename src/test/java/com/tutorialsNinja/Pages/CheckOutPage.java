@@ -20,7 +20,7 @@ public WebDriver driver;
 	@FindBy(css = "div:nth-of-type(1) > label > input[name='payment_address']")
 	private WebElement existingAddress;
 	
-	@FindBy(xpath="input[value='new']")
+	@FindBy(css = "input[@value='new']")
 	private WebElement newAddress;
 
 	@FindBy(id="input-payment-firstname")
@@ -74,6 +74,14 @@ public WebDriver driver;
 	
 	@FindBy(xpath = "//div[contains(text(),'City must be between 2 and 128 characters!')]")
 	private WebElement cityWarningMessage;
+	
+	@FindBy(xpath = "(//div[contains(text(),'Postcode must be between 2 and 10 characters!')]")
+	private WebElement postCodeWarningMessage;
+	
+	@FindBy(css = "#payment-new .has-error:nth-of-type(9) .text-danger")
+	private WebElement regionStateWarningMessage;
+	
+	
 	
 	
 	
@@ -169,6 +177,32 @@ public WebDriver driver;
 	public String retrieveCityWarningMessage() {
 		String text = cityWarningMessage.getText();
 		return text;
+	}
+	
+	public String retrievePostCodeWarningMessage() {
+		String text = postCodeWarningMessage.getText();
+		return text;
+	}
+	
+	public String retrieveRegionStateWarningMessage() {
+		String text = regionStateWarningMessage.getText();
+		return text;
+	}
+	
+	
+	public boolean retrieveAllWarningMessages( String expectedFirstNameWarning, String expectedLastNameWarning,
+			String expectedadress1Warning, String expectedcityWarning,String expectedPostcodeWarning,String expectedregionStateWarning) {
+		
+		
+		boolean firstNameWaningStatus = firstNameWarningMessage.getText().contains(expectedFirstNameWarning);
+		boolean lastNameWarningStatus = lastNameWarningMessage.getText().contains(expectedLastNameWarning);
+		boolean adress1WarningStatus = address1WarningMessage.getText().contains(expectedadress1Warning);
+		boolean cityWarningStatus = cityWarningMessage.getText().contains(expectedcityWarning);
+		boolean postCodeWarningMessageStatus = postCodeWarningMessage.getText().contains(expectedPostcodeWarning);
+		boolean regionStateWarningMessageStatus = regionStateWarningMessage.getText().contains(expectedregionStateWarning);
+		
+		return  firstNameWaningStatus && lastNameWarningStatus && adress1WarningStatus && cityWarningStatus && postCodeWarningMessageStatus && regionStateWarningMessageStatus
+				;
 	}
 	
 	
